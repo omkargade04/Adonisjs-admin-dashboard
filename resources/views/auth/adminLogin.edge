@@ -1,0 +1,87 @@
+{{--  <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Admin Login</title>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+</head>
+
+<body>
+    <form action="/adminLogin" method="POST">
+        {{ csrfField() }}
+        <input type="hidden" name="_csrf" value="Q9ghWSf0-3FD9eCiu5YxvKaxLEZ6F_K4DL8o" />
+        @error('E_BAD_CSRF_TOKEN')
+        <p> {{ $message }} </p>
+        @end
+        <div>
+            <label for="name"></label>
+            <input type="name" name="name" placeholder="Name" id="name" />
+            @if(flashMessages.has('errors.name'))
+            <small>{{ flashMessages.get("errors.name") }}</small>
+            @endif
+        </div>
+        <div>
+            <label for="password"></label>
+            <input type="password" name="password" placeholder="Password" id="password" />
+            @if(flashMessages.has('errors.password'))
+            <small>{{ flashMessages.get("errors.password") }}</small>
+            @endif
+        </div>
+        <div>
+            <input type="submit" value="Admin Login" />
+        </div>
+    </form>
+</body>
+
+</html>  --}}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+</head>
+
+<body class="bg-gray-100 h-screen flex items-center justify-center">
+
+    <form class="bg-white p-8 rounded shadow-md max-w-md" action="/adminLogin" method="POST">
+        {{ csrfField() }}
+        <div class="font-sans font-bold text-3xl flex justify-center mb-6 border-b-black ">Admin Login</div>
+
+        <div class="mb-4">
+            <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Name</label>
+            <input type="text" name="name" placeholder="Your Name" id="name"
+                class="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500">
+            @if(flashMessages.has('errors.name'))
+            <small class="text-red-500">{{ flashMessages.get("errors.name") }}</small>
+            @endif
+        </div>
+
+        <div class="mb-4">
+            <label for="password" class="block text-gray-700 text-sm font-bold mb-2">Password</label>
+            <input type="password" name="password" placeholder="Your Password" id="password"
+                class="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500">
+            @if(flashMessages.has('errors.password'))
+            <small class="text-red-500">{{ flashMessages.get("errors.password") }}</small>
+            @endif
+        </div>
+
+        <div class="mb-4 bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-500 cursor-pointer">
+            <input type="submit" value="Admin Login"
+                class="">
+        </div>
+    </form>
+
+</body>
+
+</html>

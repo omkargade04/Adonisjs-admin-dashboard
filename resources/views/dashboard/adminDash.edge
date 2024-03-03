@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Document</title>
+  @vite(['resources/css/app.css', 'resources/js/app.js'])
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 class="font-sans font semibold text-3xl flex justify-center m-6">All Users</h1>
+  <table class="mr-5 ml-5">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      @if (users && users.length > 0)
+      @each (user in users)
+      <tr>
+        <td>{{ user.name }}</td>
+        <td>{{ user.email }}</td>
+        <td class="actions">
+          <div class="bg-blue-500 text-white rounded "><a href="/editUser/{{user.id}}" class="m-3">Edit</a></div>
+          <div class="bg-red-500 text-white rounded "><a href="/deleteUser/{{user.id}}" class="m-3">Delete</a></div>
+
+        </td>
+      </tr>
+      @endeach
+      @else
+      <tr>
+        <td colspan="3">No users found</td>
+      </tr>
+      @endif
+
+    </tbody>
+  </table>
+  <div class="flex justify-center  m-6">
+  
+  <div class="bg-blue-500 text-white py-2 px-4 mr-4 rounded-md hover:bg-blue-600 cursor-pointer  transition duration-300 ease-in-out"><a href="/createUser" class="">Create New User</a></div>
+  <form action="/adminLogout" method="POST" class=" ">
+    <input type="submit" value="Logout Admin"
+      class="bg-red-500 text-white py-2 px-4  rounded-md hover:bg-red-600 cursor-pointer  transition duration-300 ease-in-out">
+  </form>
+</div>
+</body>
+
+</html>

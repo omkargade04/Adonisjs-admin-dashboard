@@ -1,0 +1,54 @@
+{{--  <!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title> AdonisJS - A fully featured web framework for Node.js </title>
+
+  @vite(['resources/css/app.css', 'resources/js/app.js'])
+</head>
+
+<body>
+  <h1> Yes it Works! </h1>
+  @eval(await auth.check())
+  @if(auth.isAuthenticated)
+  <p> Hello {{ auth.user.name }} </p>
+  @end
+  <form action="/logout" method="POST">
+    <div>
+      <input type="submit"  value="Logout User" />
+    </div>
+  </form>
+</body>
+
+</html>  --}}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>AdonisJS - A fully featured web framework for Node.js</title>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+</head>
+
+<body class="flex items-center justify-center h-screen bg-gray-100">
+
+    <div class="text-center">
+        @eval(await auth.check())
+        @if(auth.isAuthenticated)
+        <p class="text-4xl font-bold mb-8">Hello {{ auth.user.name }}</p>
+        <form action="/logout" method="POST" class="mt-4">
+            <input type="submit" value="Logout User"
+                class="bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600 transition duration-300 ease-in-out">
+        </form>
+        @endif
+    </div>
+
+</body>
+
+</html>
