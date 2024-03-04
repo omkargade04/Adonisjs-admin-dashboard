@@ -2,6 +2,7 @@ import type { HttpContext } from '@adonisjs/core/http'
 import {validateAdmin} from '#validators/admin'
 import Admin from '#models/admin';
 import User from '#models/user';
+import { validateUser } from '#validators/user';
 
 export default class AdminsController {
     public async createUser ({request, response}: HttpContext) {
@@ -9,7 +10,7 @@ export default class AdminsController {
             const token = request.csrfToken;
             console.log(token)
             const data = request.all();
-            const payload = await validateAdmin.validate(data);
+            const payload = await validateUser.validate(data);
             console.log(payload)
     
             const user = new User();
@@ -19,6 +20,7 @@ export default class AdminsController {
                 return response.redirect('/getUsers');
             }
             user.name = data.name;
+            user.username = data.username;
             user.email = data.email;
             user.password = data.password;
             await user.save();
