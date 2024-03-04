@@ -1,22 +1,27 @@
 import env from '#start/env'
 import { defineConfig } from '@adonisjs/lucid'
 
+console.log(env.get('DB_HOST'))
+
 const dbConfig = defineConfig({
   connection: 'mysql',
   connections: {
     mysql: {
       client: 'mysql2',
       connection: {
-        host: 'localhost',
-        port: 3306,
-        user: 'root',
-        password: 'Gade$1110$',
-        database: 'admin-dash',
+      
+        host: env.get('DB_HOST'),
+        port: env.get('DB_PORT'),
+        user: env.get('DB_USER'),
+        password: "Gade$1110$" || env.get('DB_PASSWORD'),
+        database: env.get('DB_DATABASE'),
       },
       migrations: {
         naturalSort: true,
         paths: ['database/migrations'],
       },
+      healthCheck: false,
+      debug: false,
     },
   },
 })
