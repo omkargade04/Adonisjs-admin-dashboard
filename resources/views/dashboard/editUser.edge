@@ -44,10 +44,17 @@
             @endif
         </div>
 
-        <div class="mb-4 bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-500 cursor-pointer">
-            <label class="text-white flex justify-center items-center">Edit User</label>
+        <button class="mb-4 bg-blue-600 text-white py-2 px-4 w-full rounded-md hover:bg-blue-500 cursor-pointer"
+            onclick="handleEditUser()">
+            Edit User
             <input type="submit" class="hidden">
-        </div>
+        </button>
+
+        <script>
+            function handleEditUser() {
+                console.log("Edit User clicked");
+            }
+        </script>
     </form>
 
 </body>
